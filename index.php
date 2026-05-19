@@ -53,9 +53,9 @@ $prpproduto->execute();
             <div class="card" style="width: 18rem">
               <img src="" class="card-img-top img-fluid" alt="..." />
               <div class="card-body">
-                <h5 class="card-title"><?php echo $dsproduto['pronome']; ?></h5>
+                <h5 class="card-title"><?php echo mb_strimwidth($dsproduto['pronome'], 0, 70, "..."); ?></h5>
                 <p class="card-text">
-                  <?php echo $dsproduto['prodescricao']; ?>
+                  <?php echo mb_strimwidth($dsproduto['prodescricao'], 0, 150, "..."); ?>
                 <p class="text-danger"><b>R$ <?php echo $dsproduto['provalorvenda']; ?></b></p>
                 </p>
                 <a href="detalhesproduto.php?id=<?php echo $dsproduto['proid']; ?>" class="btn btn-outline-dark">Mostrar Produto</a>
