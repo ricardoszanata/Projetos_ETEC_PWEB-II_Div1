@@ -16,13 +16,18 @@ $sql =
     subcatid,
     subativo,
     catnome,
-    catativo
+    catativo,
+    fotcaminho
 from 
-    produtos,subcategorias,categorias
+    produtos,subcategorias,categorias, fotosproduto
 where 
     prosubid = subid
 and
-    subcatid = catid";
+    subcatid = catid
+and
+   fotproid = proid
+and
+   fotprincipal = 1";
 $prpproduto = $pdo->prepare($sql);
 $prpproduto->execute();
 ?>
@@ -50,8 +55,8 @@ $prpproduto->execute();
       <div class="row mt-2">
         <?php while ($dsproduto = $prpproduto->fetch(PDO::FETCH_ASSOC)) { ?>
           <div class="col mt-2">
-            <div class="card" style="width: 18rem">
-              <img src="" class="card-img-top img-fluid" alt="..." />
+            <div class="card" style="width: 18rem"> 
+              <img src="<?php echo $dsproduto ['fotcaminho']; ?>" class="card-img-top img-fluid" alt="..." />
               <div class="card-body">
                 <h5 class="card-title"><?php echo mb_strimwidth($dsproduto['pronome'], 0, 70, "..."); ?></h5>
                 <p class="card-text">
